@@ -1,72 +1,91 @@
-# IEEE SB CEK Society Website Design Competition — SIGHT Affinity Group
+# 🌐 IEEE SB CEK Society Website Design Competition — SIGHT Affinity Group
 
-A responsive, content‑rich website built for the IEEE Student Branch CEK Society Website Design Competition. This implementation targets the SIGHT Affinity Group and follows the required structure: Home, About, Execom Members, Activities, Achievements, and Contact.
+A responsive and content-driven website built for the **IEEE Student Branch CEK Society Website Design Competition**, targeting the **IEEE SIGHT Affinity Group**.
+The site implements all required sections — **Home, About, Execom Members, Activities, Achievements, and Contact** — with a modern tech stack and clean UI.
 
+🔗 **Live Demo:** [sightwebdesigncompbychris.up.railway.app](https://sightwebdesigncompbychris.up.railway.app)
 
-# Live Link =  sightwebdesigncompbychris.up.railway.app
+---
 
+## 🚀 Tech Stack
 
+* **Frontend:** React 18 + TypeScript, Vite
+* **Styling/UI:** Tailwind CSS, Radix UI primitives
+* **Routing:** Wouter
+* **Data fetching:** TanStack Query
+* **Backend/Server:** Express (Vite middleware for dev, static build for prod)
 
-## Tech stack
-- React 18 + TypeScript, Vite
-- Tailwind CSS + Radix UI primitives
-- Wouter (routing), TanStack Query
-- Express server with Vite middleware for dev; static build for prod
+---
 
-## Features mapped to the brief
-- Persistent navigation: Home, About, Execom Members, Activities, Achievements, Contact
-- Home: Hero/banner with logo/name, intro, CTAs, animated stats
-- About: Two sections (local chapter + global IEEE SIGHT overview) with imagery
-- Execom Members: Card layout with placeholders for name, position, contact
-- Activities: Event cards with title, photo, description, status (past/upcoming)
-- Achievements: Cards with title, optional photo, description, date/year
-- Contact: Email, phone, and space for social/location
-- Responsive, consistent typography/colors, subtle animations
+## ✨ Features
 
-Sample data lives under `client/src/data/` and UI components under `client/src/components/ui/`.
+* **Navigation:** Persistent navbar linking all key sections
+* **Home:** Hero banner with logo/name, intro text, CTAs, animated stats
+* **About:** Dual section overview (local chapter + IEEE SIGHT global) with imagery
+* **Execom Members:** Responsive card layout with placeholders for member details
+* **Activities:** Event cards with title, photo, description, status (past/upcoming)
+* **Achievements:** Card grid with title, optional photo, description, date/year
+* **Contact:** Email, phone, and placeholders for socials/location
+* **Responsive Design:** Consistent typography, colors, and subtle animations
+* **Customizable:** Content and branding fully editable via JSON and theme files
 
-## Getting started
-Prerequisites: Node.js 18+ recommended.
+---
 
-Install dependencies and start the dev server (Express + Vite):
+## 📂 Project Structure
 
-```sh
+```bash
+.
+├── client/        # React app (pages, components, styles)
+│   ├── src/data   # JSON content (members, events, etc.)
+│   └── src/components/ui  # Shared UI components
+├── server/        # Express entry point & Vite dev integration
+├── shared/        # Shared types & schemas
+├── Assets/        # Static assets (logos, images, etc.)
+```
+
+---
+
+## 🛠 Getting Started
+
+### Prerequisites
+
+* **Node.js** 18+ recommended
+
+### Installation & Development
+
+```bash
 npm install
 npm run dev
 ```
 
-By default the server listens on PORT (defaults to 5000). Open http://localhost:5000.
+The server runs on **[http://localhost:5000](http://localhost:5000)** by default.
 
-## Production build
-Build client and server, then run:
+### Production Build
 
-```sh
+```bash
 npm run build
 npm start
 ```
 
-This serves the prebuilt client from `dist/public` via the bundled Express server.
+This serves the prebuilt client (`dist/public`) via the Express server.
 
-## Project structure (simplified)
-- `client/` — React app (pages, components, styles)
-- `server/` — Express entry and Vite dev integration
-- `shared/` — Shared types/schemas
-- `Assets/` — Static assets
+---
 
-## Customization
-- Update branding (logo/colors) in Tailwind/theme files and assets
-- Edit content/data in `client/src/data/*.json`
-- Extend pages/components under `client/src/pages` and `client/src/components`
+## 🎨 Customization
 
-## License
-MIT — see `LICENSE`.
+* Update branding (logo, colors) in Tailwind/theme config and `Assets/`
+* Edit content in `client/src/data/*.json`
+* Extend components under `client/src/components` and pages under `client/src/pages`
 
-## Credits
-Built for the IEEE SB CEK competition.
+---
 
-maded my Christopher Joshy — https://github.com/ChristopherJoshy/
+## 📜 License
 
+This project is licensed under the [MIT License](LICENSE).
 
+---
 
+## 🙌 Credits
 
-
+Built by **[Christopher Joshy](https://github.com/ChristopherJoshy)**
+For the **IEEE SB CEK Society Website Design Competition** (SIGHT Affinity Group)
