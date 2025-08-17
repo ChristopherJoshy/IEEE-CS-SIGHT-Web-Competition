@@ -2,7 +2,10 @@
 
 A responsive, content‑rich website built for the IEEE Student Branch CEK Society Website Design Competition. This implementation targets the SIGHT Affinity Group and follows the required structure: Home, About, Execom Members, Activities, Achievements, and Contact.
 
-maded my Christopher Joshy — https://github.com/ChristopherJoshy/
+
+# Live Link =  sightwebdesigncompbychris.up.railway.app
+
+
 
 ## Tech stack
 - React 18 + TypeScript, Vite
@@ -62,3 +65,8 @@ MIT — see `LICENSE`.
 Built for the IEEE SB CEK competition.
 
 maded my Christopher Joshy — https://github.com/ChristopherJoshy/
+
+
+
+
+
