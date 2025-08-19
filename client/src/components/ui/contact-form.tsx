@@ -20,7 +20,6 @@ export function ContactFormComponent() {
     formState: { errors },
     reset,
     setValue,
-    watch,
   } = useForm<ContactForm>({
     resolver: zodResolver(contactFormSchema),
   });
@@ -128,7 +127,8 @@ export function ContactFormComponent() {
             <Label htmlFor="subject" className="block text-sm font-medium text-foreground mb-2">
               Subject
             </Label>
-            <Select onValueChange={(value) => setValue("subject", value)} data-testid="select-subject">
+            <input type="hidden" {...register("subject")} />
+            <Select onValueChange={(value) => setValue("subject", value, { shouldValidate: true })} data-testid="select-subject">
               <SelectTrigger className="input-cosmic">
                 <SelectValue placeholder="Select a subject" />
               </SelectTrigger>

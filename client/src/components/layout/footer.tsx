@@ -15,10 +15,20 @@ export function Footer() {
             <p className="text-muted-foreground mb-4 max-w-md">
               Empowering communities through technology. IEEE SIGHT at CEK is dedicated to creating sustainable solutions for a better tomorrow.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex items-center gap-4">
+              <img
+                src="/ieee-logo-black.png"
+                alt="IEEE logo"
+                className="h-8 w-auto opacity-90"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+
+      <div className="flex space-x-4 mt-4">
               <a
                 href="#"
-                className="text-muted-foreground hover:text-primary transition-colors focus-cosmic"
+        className="p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-muted/40 transition-colors focus-cosmic"
                 aria-label="Twitter"
                 data-testid="social-twitter"
               >
@@ -26,7 +36,7 @@ export function Footer() {
               </a>
               <a
                 href="#"
-                className="text-muted-foreground hover:text-primary transition-colors focus-cosmic"
+        className="p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-muted/40 transition-colors focus-cosmic"
                 aria-label="LinkedIn"
                 data-testid="social-linkedin"
               >
@@ -34,7 +44,7 @@ export function Footer() {
               </a>
               <a
                 href="#"
-                className="text-muted-foreground hover:text-primary transition-colors focus-cosmic"
+        className="p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-muted/40 transition-colors focus-cosmic"
                 aria-label="GitHub"
                 data-testid="social-github"
               >

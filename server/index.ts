@@ -1,10 +1,15 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
+import helmet from "helmet";
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+// Use security headers in production; disable CSP in development to allow Vite inline modules/HMR
+if (app.get("env") !== "development") {
+  app.use(helmet());
+}
 
 app.use((req, res, next) => {
   const start = Date.now();
@@ -43,8 +48,18 @@ app.use((req, res, next) => {
     const status = err.status || err.statusCode || 500;
     const message = err.message || "Internal Server Error";
 
-    res.status(status).json({ message });
-    throw err;
+    // Avoid crashing the process after responding
+    try {
+      res.status(status).json({ message });
+    } catch {}
+    if (app.get("env") !== "production") {
+      console.error(err);
+    }
+  });
+
+  // 404 for API routes
+  app.use("/api", (_req, res) => {
+    res.status(404).json({ message: "Not Found" });
   });
 
   // importantly only setup vite in development and after

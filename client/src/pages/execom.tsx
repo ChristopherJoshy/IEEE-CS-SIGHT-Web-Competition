@@ -3,10 +3,21 @@ import { MemberCard } from "@/components/ui/member-card";
 import { Card, CardContent } from "@/components/ui/card";
 import { Mail, Phone } from "lucide-react";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
-import execomData from "@/data/execom.json";
-import type { ExecomMember } from "@shared/schema";
+import execomRaw from "@/data/execom.json?raw";
+import { z } from "zod";
+import { execomMemberSchema, type ExecomMember } from "@shared/schema";
 
-const execomMembers: ExecomMember[] = execomData;
+let parsedExecom: unknown = [];
+try {
+  parsedExecom = JSON.parse(execomRaw);
+} catch (e) {
+  console.error("execom.json is not valid JSON:", e);
+}
+const execomParse = z.array(execomMemberSchema).safeParse(parsedExecom);
+const execomMembers: ExecomMember[] = execomParse.success ? execomParse.data : [];
+if (!execomParse.success) {
+  console.error("Invalid execom.json data:", execomParse.error?.message);
+}
 
 export default function Execom() {
   const { ref: tableRef, isIntersecting: tableVisible } = useIntersectionObserver();

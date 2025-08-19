@@ -4,12 +4,23 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { ActivityCard } from "@/components/ui/activity-card";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
-import activitiesData from "@/data/activities.json";
-import type { Activity } from "@shared/schema";
+import activitiesRaw from "@/data/activities.json?raw";
+import { z } from "zod";
+import { activitySchema, type Activity } from "@shared/schema";
 import { cn } from "@/lib/utils";
 import { Handshake, FilePlus2 } from "lucide-react";
 
-const activities: Activity[] = activitiesData as Activity[];
+let parsedActivities: unknown = [];
+try {
+  parsedActivities = JSON.parse(activitiesRaw);
+} catch (e) {
+  console.error("activities.json is not valid JSON:", e);
+}
+const activitiesParse = z.array(activitySchema).safeParse(parsedActivities);
+const activities: Activity[] = activitiesParse.success ? activitiesParse.data : [];
+if (!activitiesParse.success) {
+  console.error("Invalid activities.json data:", activitiesParse.error?.message);
+}
 
 type FilterType = "all" | "upcoming" | "past";
 

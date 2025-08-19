@@ -26,5 +26,13 @@
     "description": "Successfully established IEEE SIGHT chapter at CEK, becoming the first SIGHT affiliate in the Kollam district with 25 founding members.",
     "year": "2022",
     "icon": "building"
+  },
+    {
+    "id": "5",
+    "title": "Neural Nomads",
+    "description": " Read Readme in github to learn how to edit . made by Chris ,neural_Nomads",
+    "year": "2025",
+    "icon": "building"
   }
+  
 ]

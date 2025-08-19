@@ -3,10 +3,22 @@ import { AchievementCard } from "@/components/ui/achievement-card";
 import { Card, CardContent } from "@/components/ui/card";
 import { Award, Calendar } from "lucide-react";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
-import achievementsData from "@/data/achievements.json";
-import type { Achievement } from "@shared/schema";
+import achievementsRaw from "@/data/achievements.json?raw";
+import { z } from "zod";
+import { achievementSchema, type Achievement } from "@shared/schema";
+import { Link } from "wouter";
 
-const achievements: Achievement[] = achievementsData;
+let parsedAchievements: unknown = [];
+try {
+  parsedAchievements = JSON.parse(achievementsRaw);
+} catch (e) {
+  console.error("achievements.json is not valid JSON:", e);
+}
+const achievementsParse = z.array(achievementSchema).safeParse(parsedAchievements);
+const achievements: Achievement[] = achievementsParse.success ? achievementsParse.data : [];
+if (!achievementsParse.success) {
+  console.error("Invalid achievements.json data:", achievementsParse.error?.message);
+}
 
 export default function Achievements() {
   const { ref: timelineRef, isIntersecting: timelineVisible } = useIntersectionObserver();
@@ -151,20 +163,12 @@ export default function Achievements() {
                 expanding our reach and deepening our commitment to humanitarian technology.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a 
-                  href="/activities"
-                  className="btn-cosmic inline-flex items-center justify-center ink-link"
-                  data-testid="view-current-projects"
-                >
+                <Link href="/activities" className="btn-cosmic inline-flex items-center justify-center ink-link" data-testid="view-current-projects">
                   View Current Projects
-                </a>
-                <a 
-                  href="/contact"
-                  className="btn-glass inline-flex items-center justify-center ink-link"
-                  data-testid="partner-with-us"
-                >
+                </Link>
+                <Link href="/contact" className="btn-glass inline-flex items-center justify-center ink-link" data-testid="partner-with-us">
                   Partner With Us
-                </a>
+                </Link>
               </div>
             </CardContent>
           </Card>

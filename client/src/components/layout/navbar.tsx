@@ -68,6 +68,7 @@ export function Navbar() {
                       ? "text-primary"
                       : "text-muted-foreground hover:text-primary"
                   }`}
+                  aria-current={location === item.href ? "page" : undefined}
                   data-testid={`nav-link-${item.label.toLowerCase()}`}
                 >
                   {item.label}
@@ -82,6 +83,8 @@ export function Navbar() {
               className="md:hidden border rounded-lg focus-cosmic active:scale-95"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle mobile menu"
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-menu"
               data-testid="mobile-menu-toggle"
             >
               {isMobileMenuOpen ? (
@@ -94,7 +97,16 @@ export function Navbar() {
 
           {/* Mobile Navigation */}
           {isMobileMenuOpen && (
-            <div className="md:hidden mt-3 space-y-1.5 rounded-xl p-2 border bg-background shadow-sm" data-testid="mobile-menu">
+            <div
+              id="mobile-menu"
+              role="menu"
+              aria-label="Main navigation"
+              className="md:hidden mt-3 space-y-1.5 rounded-xl p-2 border bg-background shadow-sm"
+              data-testid="mobile-menu"
+              onKeyDown={(e) => {
+                if (e.key === "Escape") setIsMobileMenuOpen(false);
+              }}
+            >
               {navItems.map((item) => (
                 <Link
                   key={item.href}

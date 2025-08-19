@@ -21,6 +21,8 @@ export function ActivityCard({ activity, className = "", style }: ActivityCardPr
           src={activity.image}
           alt={activity.title}
           className="w-full h-40 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-500 bw-image"
+          loading="lazy"
+          decoding="async"
           data-testid={`activity-image-${activity.id}`}
         />
       </div>
