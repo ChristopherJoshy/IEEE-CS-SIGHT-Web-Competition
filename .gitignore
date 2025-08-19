@@ -37,6 +37,20 @@ coverage/
 # OS
 .DS_Store
 Thumbs.db
-.gitignore
-# Project-specific
-/Assets/
+
+# Package managers / caches
+.pnpm-store
+.yarn/
+.parcel-cache
+
+# Framework build outputs
+client/dist/
+.next/
+.nuxt/
+out/
+.svelte-kit/
+
+# Misc
+.eslintcache
+.prettier-cache
+coverage-final.json
