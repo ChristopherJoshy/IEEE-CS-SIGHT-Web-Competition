@@ -7,6 +7,11 @@ The site implements all required sections — **Home, About, Execom Members, Act
 
 ---
 
+## Team Details
+
+* **Name** : neural_Nomads
+* **Members** : Christopher Joshy
+
 ## 🚀 Tech Stack
 
 * **Frontend:** React 18 + TypeScript, Vite
